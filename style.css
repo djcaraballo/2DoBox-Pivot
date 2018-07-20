@@ -1,3 +1,8 @@
+/*add organizational comments*/
+/*change respective ids to classes*/
+/*consistency with hex values*/
+/*use of css modularization-DRY*/
+
 .container {
     display: flex;
     flex-direction: column;
