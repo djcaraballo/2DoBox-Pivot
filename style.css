@@ -50,7 +50,7 @@ input {
 }
 
 /*BOTTOM SECTION STYLING*/
-#search-input {
+.search-input {
     margin-top: 50px;
 }
 
@@ -145,7 +145,7 @@ button {
         width: 85%;
     }
 
-    #search-input {
+    .search-input {
         border: solid #999 1px;
     }
 }
