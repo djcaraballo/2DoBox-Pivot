@@ -9,6 +9,19 @@ var qualityVariable = "swill";
 
 // refactor with template literal
 // use expression interpolation
+
+// add function that checks initial state of page and renders DOM elements
+$('.save-btn').on('click', function(event) {
+    event.preventDefault();
+    if ($('#title-input').val() === "" || $('#body-input').val() === "") {
+       return false;
+    };  
+    numCards++;
+    $( ".bottom-box" ).prepend(newCard('card' + numCards, $('#title-input').val(), $('#body-input').val(), qualityVariable)); 
+    localStoreCard();
+    $('form')[0].reset();
+});
+
 var newCard = function(id , title , body , quality) {
     return '<div id="' + id + '"class="card-container"><h2 class="title-of-card">'  
             + title +  '</h2>'
@@ -21,7 +34,7 @@ var newCard = function(id , title , body , quality) {
             + '<hr>' 
             + '</div>';
 };
-
+// Push card object onto array
 function cardObject() {
     return {
         title: $('#title-input').val(),
@@ -41,16 +54,6 @@ var localStoreCard = function() {
     localStorage.setItem('card' + numCards  , cardString);
 }
 
-$('.save-btn').on('click', function(event) {
-    event.preventDefault();
-    if ($('#title-input').val() === "" || $('#body-input').val() === "") {
-       return false;
-    };  
-    numCards++;
-    $( ".bottom-box" ).prepend(newCard('card' + numCards, $('#title-input').val(), $('#body-input').val(), qualityVariable)); 
-    localStoreCard();
-    $('form')[0].reset();
-});
 // refactor toggling of buttons
 $(".bottom-box").on('click', function(event){
     var currentQuality = $($(event.target).siblings('p.quality').children()[0]).text().trim();
