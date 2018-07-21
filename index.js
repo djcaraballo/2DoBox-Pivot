@@ -13,7 +13,7 @@ var newCard = function(id , title , body , quality) {
     return '<div id="' + id + '"class="card-container"><h2 class="title-of-card">'  
             + title +  '</h2>'
             + '<button class="delete-button"></button>'
-            +'<p class="body-of-card">'
+            +'<p>'
             + body + '</p>'
             + '<button class="upvote"></button>' 
             + '<button class="downvote"></button>' 
