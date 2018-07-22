@@ -4,16 +4,18 @@
 // refactor ids to classes when possible - already refactored css and html
 var title = $('#title-input').val();
 var body = $('#body-input').val();
+var ul = $('ul').val();
 var numCards = 0;
 var qualityVariable = "swill";
+var card 
 
 
 // add function that checks initial state of page and renders DOM elements
     // use document.ready method to trigger page load
     // parse items from localStorage
-$(document).ready() {
-  
-}
+$(document).ready(function() {
+  localGetCard();
+}) 
 
 
 $('.save-btn').on('click', function(event) {
@@ -29,31 +31,36 @@ $('.save-btn').on('click', function(event) {
 });
 
 // unique identifier for each new idea?
-var newCard = function(id , title , body , quality) {
-    return `<ul id="${id}" class="card-container">
-              <h2 class="title-of-card"> ${title} </h2>
-              <button class="delete-button"></button>
-              <p>${body}</p>
-              <button class="upvote"></button>
-              <button class="downvote"></button>
-              <p class="quality">quality:<span class="qualityVariable">${quality}</span></p>
-              <hr> 
-            </ul>`;
+function newCard(id , title , body , quality) {
+    var id = id;
+    // var cardHTML = cardHTML[0].id;
+    ul.prepend(`
+      <li id="${card.id}" class="card-container">
+        <h2 class="title-of-card"> ${card.title} </h2>
+        <button class="delete-button"></button>
+        <p>${card.body}</p>
+        <button class="upvote"></button>
+        <button class="downvote"></button>
+        // <p class="quality">quality:<span class="qualityVariable">${card.quality}</span></p>
+        <hr> 
+      </li>`);
 };
 // Push card object onto array
+var ideasArray = [];
 function cardObject() {
-    return {
-        title: $('#title-input').val(),
-        body: $('#body-input').val(),
-        quality: qualityVariable
-    };
+  ideasArray.push({
+      title: $('#title-input').val(),
+      body: $('#body-input').val(),
+      // quality: qualityVariable
+  });
 }
 // current status: unable to add more than one idea to local storage and to DOM
 // current status: upon refresh unable to save new ideas also undefined card appears
 // !!!!!!!!!!!!!!!Initial page state => create new localStorage get item and parse functions
  
 $.each(localStorage, function(key) {
-    var cardData = JSON.parse(this);
+    var retrieveCard = localStorage.getItem(this);
+    var cardData = JSON.parse(retrieveCard);
     console.log(this);
     numCards++;
     $( ".bottom-box" ).prepend(newCard(key, cardData.title, cardData.body, cardData.quality));
@@ -62,14 +69,15 @@ $.each(localStorage, function(key) {
 // current status: localStorage populates before refreshing page
     //upon refresh undefined card appears
         //no new ideas saved to localStorage 
-var localStoreCard = function() {
+function localStoreCard(card) {
     var cardString = JSON.stringify(cardObject());
-    localStorage.setItem('card' + numCards  , cardString);
+    localStorage.setItem("card", cardString);
 }
 
-var localGetCard = function() {
-  var cardObjectInJSON = localStorage.getItem(cardHTMLId);
-  
+function localGetCard (card) {
+  var retrievedObject = localStorage.getItem("card");
+  var parsedItem = JSON.parse(retrievedObject);
+  return parsedItem;
 }
 
 // refactor toggling of buttons - current status: not functional
