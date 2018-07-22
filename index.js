@@ -11,6 +11,8 @@ var qualityVariable = "swill";
 // use expression interpolation
 
 // add function that checks initial state of page and renders DOM elements
+    // use document.ready method to trigger page load
+    // parse items from localStorage
 $('.save-btn').on('click', function(event) {
     event.preventDefault();
     if ($('#title-input').val() === "" || $('#body-input').val() === "") {
@@ -19,9 +21,11 @@ $('.save-btn').on('click', function(event) {
     numCards++;
     $( ".bottom-box" ).prepend(newCard('card' + numCards, $('#title-input').val(), $('#body-input').val(), qualityVariable)); 
     localStoreCard();
+    // current status: localStoreCard is not storing idea in localStorage
     $('form')[0].reset();
 });
 
+// unique identifier for each new idea?
 var newCard = function(id , title , body , quality) {
     return '<div id="' + id + '"class="card-container"><h2 class="title-of-card">'  
             + title +  '</h2>'
@@ -42,19 +46,26 @@ function cardObject() {
         quality: qualityVariable
     };
 }
-
+// current status: unable to add more than one idea to local storage and to DOM
+// current status: upon refresh unable to save new ideas also undefined card appears
+// !!!!!!!!!!!!!!!Initial page state => create new localStorage get item and parse functions
+ 
 $.each(localStorage, function(key) {
     var cardData = JSON.parse(this);
+    console.log(this);
     numCards++;
     $( ".bottom-box" ).prepend(newCard(key, cardData.title, cardData.body, cardData.quality));
 });
 
+// current status: localStorage populates before refreshing page
+    //upon refresh undefined card appears
+        //no new ideas saved to localStorage 
 var localStoreCard = function() {
     var cardString = JSON.stringify(cardObject());
     localStorage.setItem('card' + numCards  , cardString);
 }
 
-// refactor toggling of buttons
+// refactor toggling of buttons - current status: not functional
 $(".bottom-box").on('click', function(event){
     var currentQuality = $($(event.target).siblings('p.quality').children()[0]).text().trim();
     var qualityVariable;
