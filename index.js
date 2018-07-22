@@ -7,12 +7,15 @@ var body = $('#body-input').val();
 var numCards = 0;
 var qualityVariable = "swill";
 
-// refactor with template literal
-// use expression interpolation
 
 // add function that checks initial state of page and renders DOM elements
     // use document.ready method to trigger page load
     // parse items from localStorage
+$(document).ready() {
+  
+}
+
+
 $('.save-btn').on('click', function(event) {
     event.preventDefault();
     if ($('#title-input').val() === "" || $('#body-input').val() === "") {
@@ -27,16 +30,15 @@ $('.save-btn').on('click', function(event) {
 
 // unique identifier for each new idea?
 var newCard = function(id , title , body , quality) {
-    return '<div id="' + id + '"class="card-container"><h2 class="title-of-card">'  
-            + title +  '</h2>'
-            + '<button class="delete-button"></button>'
-            +'<p>'
-            + body + '</p>'
-            + '<button class="upvote"></button>' 
-            + '<button class="downvote"></button>' 
-            + '<p class="quality">' + 'quality:' + '<span class="qualityVariable">' + quality + '</span>' + '</p>'
-            + '<hr>' 
-            + '</div>';
+    return `<ul id="${id}" class="card-container">
+              <h2 class="title-of-card"> ${title} </h2>
+              <button class="delete-button"></button>
+              <p>${body}</p>
+              <button class="upvote"></button>
+              <button class="downvote"></button>
+              <p class="quality">quality:<span class="qualityVariable">${quality}</span></p>
+              <hr> 
+            </ul>`;
 };
 // Push card object onto array
 function cardObject() {
@@ -63,6 +65,11 @@ $.each(localStorage, function(key) {
 var localStoreCard = function() {
     var cardString = JSON.stringify(cardObject());
     localStorage.setItem('card' + numCards  , cardString);
+}
+
+var localGetCard = function() {
+  var cardObjectInJSON = localStorage.getItem(cardHTMLId);
+  
 }
 
 // refactor toggling of buttons - current status: not functional
