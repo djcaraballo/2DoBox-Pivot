@@ -97,7 +97,7 @@ function deleteCard() {
 //        return false;
 //     };  
 //     numCards++;
-//     $( ".bottom-box" ).prepend(newCard('card' + numCards, $('#title-input').val(), $('#body-input').val(), qualityVariable)); 
+//     $( "ul" ).prepend(newCard('card' + numCards, $('#title-input').val(), $('#body-input').val(), qualityVariable)); 
 //     localStoreCard();
 //     current status: localStoreCard is not storing idea in localStorage
 //     $('form')[0].reset();
@@ -123,7 +123,7 @@ function deleteCard() {
 //     var cardData = JSON.parse(retrieveCard);
 //     console.log(this);
 //     numCards++;
-//     $( ".bottom-box" ).prepend(newCard(key, cardData.title, cardData.body, cardData.quality));
+//     $( "ul" ).prepend(newCard(key, cardData.title, cardData.body, cardData.quality));
 // });
 
 // current status: localStorage populates before refreshing page
@@ -136,7 +136,7 @@ function deleteCard() {
 
 
 // refactor toggling of buttons - current status: not functional
-// $(".bottom-box").on('click', function(event){
+// $("ul").on('click', function(event){
 //     var currentQuality = $($(event.target).siblings('p.quality').children()[0]).text().trim();
 //     var qualityVariable;
 // remove nested if/else statements - possibly use ternary operators

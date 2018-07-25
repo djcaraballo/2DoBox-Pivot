@@ -6,96 +6,104 @@
 
 /*WHOLE PAGE STYLING*/
 body {
-    box-sizing: border-box;
-    margin: 0;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    font-family: 'Roboto Slab', serif;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 /*TOP SECTION STYLING*/
-.top-box {
-    /*use flex to align elements*/
-    background-color: #E5F3F2;
-    box-sizing: border-box;
-    height: 300px;
-    margin: 0;
-    text-align: center;
+.container {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto Slab', serif;
+  background-color: #E5F3F2;
+  box-sizing: border-box;
+  height: 300px;
+  margin: 0;
+  text-align: center;
 }
 
+/*.top-box {
+  background-color: #E5F3F2;
+  box-sizing: border-box;
+  height: 300px;
+  margin: 0;
+  text-align: center;
+}*/
+
 h1{
-    color: #00A79D;
-    display: inline-block;
-    font-size: 275%;
-    margin-bottom:  30px;
+  color: #00A79D;
+  display: inline-block;
+  font-size: 275%;
+  margin-bottom:  30px;
 }
 
 .title-text-color {
-    color: #6D6E71;
+  color: #6D6E71;
 }
 
 /*check width of 45% throughout*/
 input {
-    align-items: center;
-    display: flex;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 100%;
-    height: 30px;
-    justify-content: space-between;
-    margin: 10px auto;
-    width: 45%;
+  align-items: center;
+  display: flex;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 100%;
+  height: 30px;
+  justify-content: space-between;
+  margin: 10px auto;
+  width: 45%;
 }
 
 /*BOTTOM SECTION STYLING*/
 .search-input {
-    margin-top: 50px;
+  border: solid #999 1px;
+  margin-top: 50px;
 }
 
 .save-btn {
-    background-color: #00A79D;
-    border: none;
-    color: #FFF;
-    /*check font sizes*/
-    font-size: 120%;
-    height: 30px;
-    width: 45.5%;
+  background-color: #00A79D;
+  border: none;
+  color: #FFF;
+  font-size: 120%;
+  height: 30px;
+  width: 45.25%;
 }
 
 .save-btn:hover {
-    background-color: #045E55;
+  background-color: #045E55;
+}
+
+ul {
+  padding: 0px;
 }
 
 li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .card-container {
-    margin: auto;
-    padding: 0;
-    position: relative;
-    width: 45%;
+  margin: 50px auto;
+  padding: 0;
+  position: relative;
+  width: 45%;
 }
 
 .title-of-card{
-    color: #6D6E71;
-    /*use flex instead of inline-block*/
-    display: inline-block;
-    font-family: 'Roboto Slab', serif;
-    font-size: 140%;
+  color: #6D6E71;
+  /*use flex instead of inline-block*/
+  display: inline-block;
+  font-family: 'Roboto Slab', serif;
+  font-size: 140%;
 }
 
 p {
-    color: #939598;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 100%;
+  color: #939598;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 100%;
 }
 
 button {
-    /*background-color: transparent;*/
-    border: none;
+  /*background-color: transparent;*/
+  border: none;
 }
 
 .upvote,
@@ -104,54 +112,77 @@ button {
 .downvote:hover,
 .delete-button,
 .delete-button:hover {
-    background-size: cover;
-    height: 20px;
-    width: 20px;
+  background-size: cover;
+  height: 20px;
+  width: 20px;
 }
 
 .upvote {
-    background-image: url(./images/upvote.svg);
-    /*adjust margin with rems*/
-    margin-right: 5px;
-     /*use space around to replace margin*/
+  background-image: url(./images/upvote.svg);
+  /*adjust margin with rems*/
+  margin-right: 5px;
+   /*use space around to replace margin*/
 }
 
 .upvote:hover {
-    background-color: transparent;
-    background-image: url(./images/upvote-hover.svg);
+  background-color: transparent;
+  background-image: url(./images/upvote-hover.svg);
 }
 
 .downvote {
-    background-image: url(./images/downvote.svg);
-    /*adjust margin with rems*/
-    margin-right: 5px; 
-    /*use space around to replace margin*/
+  background-image: url(./images/downvote.svg);
+  /*adjust margin with rems*/
+  margin-right: 5px; 
+  /*use space around to replace margin*/
 }
 
 .downvote:hover {
-    background-image: url(./images/downvote-hover.svg);
+  background-image: url(./images/downvote-hover.svg);
 }
 
 .delete-button {
-    background-image: url(./images/delete.svg);
-    /*use flex instead of position absolute*/
-    position: absolute;
-    right: 10px;
-    top: 15px;
+  background-image: url(./images/delete.svg);
+  /*use flex instead of position absolute*/
+  position: absolute;
+  right: 10px;
+  top: 15px;
 }
 
 .delete-button:hover {
-    background-image: url(./images/delete-hover.svg);
+  background-image: url(./images/delete-hover.svg);
 }
 
-@media(max-width: 640px){
+@media(max-width: 1130px) {
+  .save-btn {
+    width: 45.5%;
+  }
+}
 
-    .card-container {
-        width: 85%;
-    }
+@media(max-width: 990px){
+  .card-container,
+  input {
+    width: 425px;
+  }
 
-    .search-input {
-        border: solid #999 1px;
-    }
+  .save-btn {
+    width: 429px;
+  }
+}
+
+@media(max-width: 530px) {
+  .card-container,
+  input {
+    width: 80%;
+  }
+
+  .save-btn {
+    width: 80.75%;
+  }
+}
+
+@media(max-width: 320px) {
+  .save-btn {
+    width: 81.75%;
+  }
 }
 
