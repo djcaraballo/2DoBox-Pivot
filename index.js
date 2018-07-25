@@ -7,25 +7,25 @@
 // var body = $('#body-input').val();
 // var ul = $('ul').val();
 
-var numCards = 0;
+// var numCards = 0;
 retrieveObjectsInStorage();
 // var qualityVariable = "swill";
 // var card
 
-function cardObject(id, title, body, quality) {
+function CardObject(id, title, body, quality) {
   this.id = id;
   this.title = title;
   this.body = body;
   this.quality = quality;
 };
 
-cardObject();
+CardObject();
 
 function newCard(obj) {
-  $('.bottom-box').prepend(`
+  $('ul').prepend(`
     <li id="${obj.id}" class="card-container">
       <h2 class="title-of-card"> ${obj.title} </h2>
-      <button class="delete-button"></button>
+      <button class="delete-button" data-id="${obj.id}"></button>
       <p>${obj.body}</p>
       <button class="upvote"></button>
       <button class="downvote"></button>
@@ -42,17 +42,17 @@ $('.save-btn').on('click', saveBtn);
 
 function saveBtn(event) {
   event.preventDefault();
-  var ideaObject = new cardObject(Date.now(), $('#title-input').val(), $('#body-input').val(), 'swill');
-  numCards++;
+  var ideaObject = new CardObject(Date.now(), $('#title-input').val(), $('#body-input').val(), 'swill');
+  // numCards++;
   console.log(ideaObject);
   localStoreCard(ideaObject);
   newCard(ideaObject);
   $('form')[0].reset();
 };
 
-function localStoreCard(cardObject) {
-  var cardString = JSON.stringify(cardObject);
-  localStorage.setItem('card' + numCards, cardString)
+function localStoreCard(CardObject) {
+  var cardString = JSON.stringify(CardObject);
+  localStorage.setItem(CardObject.id, cardString)
 };
 
 function localGetCard(card) {
@@ -66,7 +66,7 @@ function retrieveObjectsInStorage() {
     for (var i = 0; i < localStorage.length; i++) {
         var objectFromStorage = localStorage.getItem(keyArray[i]);
         var cardData = JSON.parse(objectFromStorage);
-        if (!cardData.completed) newCard(cardData);
+        newCard(cardData);
     }
 }
 
@@ -74,10 +74,10 @@ console.log(localGetCard())
 
 $('.delete-button').on('click', deleteCard);
 
-function deleteCard(event) {
+function deleteCard() {
   // event.preventDefault();
   $(this).closest('li').remove();
-  localStorage.removeItem($(this.attr));
+  localStorage.removeItem($(this).attr('data-id'));
   console.log($(this.attr));
 };
 
