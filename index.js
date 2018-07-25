@@ -6,7 +6,9 @@
 // var title = $('#title-input').val();
 // var body = $('#body-input').val();
 // var ul = $('ul').val();
+
 var numCards = 0;
+retrieveObjectsInStorage();
 // var qualityVariable = "swill";
 // var card
 
@@ -53,6 +55,22 @@ function localStoreCard(cardObject) {
   localStorage.setItem('card' + numCards, cardString)
 };
 
+function localGetCard(card) {
+  var retrievedObject = localStorage.getItem(card);
+  var parsedItem = JSON.parse(retrievedObject);
+  return parsedItem;
+}
+
+function retrieveObjectsInStorage() {
+  var keyArray = Object.keys(localStorage);
+    for (var i = 0; i < localStorage.length; i++) {
+        var objectFromStorage = localStorage.getItem(keyArray[i]);
+        var cardData = JSON.parse(objectFromStorage);
+        if (!cardData.completed) newCard(cardData);
+    }
+}
+
+console.log(localGetCard())
 
 
 
@@ -109,11 +127,6 @@ function localStoreCard(cardObject) {
 //     localStorage.setItem("card" + numCards, cardString);
 // }
 
-// function localGetCard (card) {
-//   var retrievedObject = localStorage.getItem("card");
-//   var parsedItem = JSON.parse(retrievedObject);
-//   return parsedItem;
-// }
 
 // refactor toggling of buttons - current status: not functional
 // $(".bottom-box").on('click', function(event){
