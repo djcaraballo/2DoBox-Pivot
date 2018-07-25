@@ -68,6 +68,10 @@ input {
     background-color: #045E55;
 }
 
+li {
+    list-style-type: none;
+}
+
 .card-container {
     margin: auto;
     padding: 0;
