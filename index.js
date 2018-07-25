@@ -6,12 +6,14 @@
 // var title = $('#title-input').val();
 // var body = $('#body-input').val();
 // var ul = $('ul').val();
+
 var numCards = 0;
+retrieveObjectsInStorage();
 // var qualityVariable = "swill";
 // var card
 
 function cardObject(id, title, body, quality) {
-  this.id = Date.now();
+  this.id = id;
   this.title = title;
   this.body = body;
   this.quality = quality;
@@ -20,7 +22,7 @@ function cardObject(id, title, body, quality) {
 cardObject();
 
 function newCard(obj) {
-  $('bottom-box').append(`
+  $('.bottom-box').prepend(`
     <li id="${obj.id}" class="card-container">
       <h2 class="title-of-card"> ${obj.title} </h2>
       <button class="delete-button"></button>
@@ -40,7 +42,7 @@ $('.save-btn').on('click', saveBtn);
 
 function saveBtn(event) {
   event.preventDefault();
-  var ideaObject = new cardObject($('#title-input').val(), $('#body-input').val(), 'swill');
+  var ideaObject = new cardObject(Date.now(), $('#title-input').val(), $('#body-input').val(), 'swill');
   numCards++;
   console.log(ideaObject);
   localStoreCard(ideaObject);
@@ -53,6 +55,22 @@ function localStoreCard(cardObject) {
   localStorage.setItem('card' + numCards, cardString)
 };
 
+function localGetCard(card) {
+  var retrievedObject = localStorage.getItem(card);
+  var parsedItem = JSON.parse(retrievedObject);
+  return parsedItem;
+}
+
+function retrieveObjectsInStorage() {
+  var keyArray = Object.keys(localStorage);
+    for (var i = 0; i < localStorage.length; i++) {
+        var objectFromStorage = localStorage.getItem(keyArray[i]);
+        var cardData = JSON.parse(objectFromStorage);
+        if (!cardData.completed) newCard(cardData);
+    }
+}
+
+console.log(localGetCard())
 
 
 
@@ -109,11 +127,6 @@ function localStoreCard(cardObject) {
 //     localStorage.setItem("card" + numCards, cardString);
 // }
 
-// function localGetCard (card) {
-//   var retrievedObject = localStorage.getItem("card");
-//   var parsedItem = JSON.parse(retrievedObject);
-//   return parsedItem;
-// }
 
 // refactor toggling of buttons - current status: not functional
 // $(".bottom-box").on('click', function(event){
