@@ -52,6 +52,7 @@ input {
 /*BOTTOM SECTION STYLING*/
 .search-input {
     margin-top: 50px;
+    border: solid #999 1px;
 }
 
 .save-btn {
@@ -61,7 +62,7 @@ input {
     /*check font sizes*/
     font-size: 120%;
     height: 30px;
-    width: 45.5%;
+    width: 45.25%;
 }
 
 .save-btn:hover {
@@ -144,14 +145,37 @@ button {
     background-image: url(./images/delete-hover.svg);
 }
 
-@media(max-width: 640px){
+@media(max-width: 1130px) {
+    .save-btn {
+        width: 45.5%;
+    }
+}
 
-    .card-container {
-        width: 85%;
+@media(max-width: 990px){
+    .card-container,
+    input {
+        width: 425px;
     }
 
-    .search-input {
-        border: solid #999 1px;
+    .save-btn {
+        width: 429px;
+    }
+}
+
+@media(max-width: 530px) {
+    .card-container,
+    input {
+        width: 80%;
+    }
+
+    .save-btn {
+        width: 80.75%;
+    }
+}
+
+@media(max-width: 320px) {
+    .save-btn {
+        width: 81.75%;
     }
 }
 
