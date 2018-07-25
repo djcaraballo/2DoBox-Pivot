@@ -11,7 +11,7 @@ var numCards = 0;
 // var card
 
 function cardObject(id, title, body, quality) {
-  this.id = Date.now();
+  this.id = id;
   this.title = title;
   this.body = body;
   this.quality = quality;
@@ -20,7 +20,7 @@ function cardObject(id, title, body, quality) {
 cardObject();
 
 function newCard(obj) {
-  $('bottom-box').append(`
+  $('bottom-box').prepend(`
     <li id="${obj.id}" class="card-container">
       <h2 class="title-of-card"> ${obj.title} </h2>
       <button class="delete-button"></button>
@@ -40,7 +40,7 @@ $('.save-btn').on('click', saveBtn);
 
 function saveBtn(event) {
   event.preventDefault();
-  var ideaObject = new cardObject($('#title-input').val(), $('#body-input').val(), 'swill');
+  var ideaObject = new cardObject(Date.now(), $('#title-input').val(), $('#body-input').val(), 'swill');
   numCards++;
   console.log(ideaObject);
   localStoreCard(ideaObject);
