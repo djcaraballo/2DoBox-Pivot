@@ -1,32 +1,29 @@
 <!-- clean up spacing, indentation (2 spaces instead of 4), and comments -->
-<!-- use aria labels -->
 <!-- use classes instead of id tags -->
 <!doctype html>
 <html lang="en">
   <head>
-    <title>ideabox</title>
+    <title>ToDoBox</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   </head>
   <body>
-    <section class="container box">
-      <article class="top-box">
-        <h1 class="idea">idea<span class="title-text-color">box</span></h1>
-        <form>
-          <input id="title-input" type="text" placeholder="Title">
-          <input id="body-input" type="text" placeholder="Body">
-          <button class="save-btn">save</button>
-        </form>
-      </article>
-      <input class="search-input" type="text" placeholder="Search">
-      <article class="bottom-box"> 
-          <!-- appended items here -->
-          <!-- optionally add ul to append child elements -->
-        <ul></ul>
-      </article>
-    </section>
+    <header class="container box top-box" aria-label="user form box">
+      <h1 class="todo">ToDo<span class="title-text-color">box</span></h1>
+      <form>
+        <input id="title-input" type="text" placeholder="Title" aria-placeholder="ToDo title input box">
+        <input id="body-input" type="text" placeholder="Body" aria-placeholder="ToDo body input box">
+        <button class="save-btn" aria-label="Save">save</button>
+      </form>
+    </header>
+    <main>
+      <input class="search-input" type="text" placeholder="Search" aria-label="Search input box">
+      <ul>
+        <!-- appended items here -->
+      </ul>
+    </main>
       <script src="./jquery/jquery-3.2.1.js"></script>
       <script src="./index.js"></script>
   </body>
