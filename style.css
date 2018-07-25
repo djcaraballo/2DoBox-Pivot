@@ -72,6 +72,10 @@ input {
   background-color: #045E55;
 }
 
+ul {
+  padding: 0px;
+}
+
 li {
   list-style-type: none;
 }
