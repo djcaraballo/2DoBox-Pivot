@@ -72,7 +72,14 @@ function retrieveObjectsInStorage() {
 
 console.log(localGetCard())
 
+$('.delete-button').on('click', deleteCard);
 
+function deleteCard(event) {
+  // event.preventDefault();
+  $(this).closest('li').remove();
+  localStorage.removeItem($(this.attr));
+  console.log($(this.attr));
+};
 
 
 // add function that checks initial state of page and renders DOM elements
@@ -166,7 +173,6 @@ console.log(localGetCard())
 //     }
 // });
 
-// $('delete-button').on('click', deleteBtn() {
 
 // });
 
