@@ -20,7 +20,7 @@ function cardObject(id, title, body, quality) {
 cardObject();
 
 function newCard(obj) {
-  $('bottom-box').prepend(`
+  $('.bottom-box').prepend(`
     <li id="${obj.id}" class="card-container">
       <h2 class="title-of-card"> ${obj.title} </h2>
       <button class="delete-button"></button>
