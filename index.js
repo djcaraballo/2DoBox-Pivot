@@ -1,16 +1,7 @@
-// remove global variables
-// refactor code flow
-// create objects
-// refactor ids to classes when possible - already refactored css and html
+$('.save-btn').on('click', saveBtn);
+$('ul').on('click', '.delete-button', deleteCard);
 
-// var title = $('#title-input').val();
-// var body = $('#body-input').val();
-// var ul = $('ul').val();
-
-// var numCards = 0;
 retrieveObjectsInStorage();
-// var qualityVariable = "swill";
-// var card
 
 function CardObject(id, title, body, quality) {
   this.id = id;
@@ -39,16 +30,12 @@ function newCard(obj) {
     </li>`);
 };
 
-// var newIdeaObjects = function() { 
-  
-// };
-
-$('.save-btn').on('click', saveBtn);
-
 function saveBtn(event) {
   event.preventDefault();
+  if ($('#title-input').val() === "" || $('#body-input').val() === "") {
+       return false;
+    };  
   var ideaObject = new CardObject(Date.now(), $('#title-input').val(), $('#body-input').val(), 'swill');
-  // numCards++;
   console.log(ideaObject);
   localStoreCard(ideaObject);
   newCard(ideaObject);
@@ -75,69 +62,21 @@ function retrieveObjectsInStorage() {
     }
 }
 
-console.log(localGetCard())
-
-$('.delete-button').on('click', deleteCard);
-
 function deleteCard() {
-  // event.preventDefault();
   $(this).closest('li').remove();
   localStorage.removeItem($(this).attr('data-id'));
   console.log($(this.attr));
 };
 
+// $('li').on('focusout', 'h2')
 
-// add function that checks initial state of page and renders DOM elements
-    // use document.ready method to trigger page load
-    // parse items from localStorage
-
-// $(document).ready(function() {
-//   localGetCard();
-// }) 
-
-
-// $('.save-btn').on('click', function(event) {
-//     event.preventDefault();
-//     if ($('#title-input').val() === "" || $('#body-input').val() === "") {
-//        return false;
-//     };  
-//     numCards++;
-//     $( "ul" ).prepend(newCard('card' + numCards, $('#title-input').val(), $('#body-input').val(), qualityVariable)); 
-//     localStoreCard();
-//     current status: localStoreCard is not storing idea in localStorage
-//     $('form')[0].reset();
-// });
-
-// unique identifier for each new idea?
-
-// Push card object onto array
-// var ideasArray = [];
-// function cardObject() {
-//   ideasArray.push({
-//       title: $('#title-input').val(),
-//       body: $('#body-input').val(),
-//       // quality: qualityVariable
-//   });
+// function editTodoTitle (){
+//     var object = getObject($(this).closest('li').attr('id'));
+//     var newContent = $(this).text();
+//     object.title = newContent;
+//     setObject(object);
 // }
-// current status: unable to add more than one idea to local storage and to DOM
-// current status: upon refresh unable to save new ideas also undefined card appears
-// !!!!!!!!!!!!!!!Initial page state => create new localStorage get item and parse functions
- 
-// $.each(localStorage, function(key) {
-//     var retrieveCard = localStorage.getItem(this);
-//     var cardData = JSON.parse(retrieveCard);
-//     console.log(this);
-//     numCards++;
-//     $( "ul" ).prepend(newCard(key, cardData.title, cardData.body, cardData.quality));
-// });
 
-// current status: localStorage populates before refreshing page
-    //upon refresh undefined card appears
-        //no new ideas saved to localStorage 
-// function localStoreCard(card) {
-//     var cardString = JSON.stringify(cardObject());
-//     localStorage.setItem("card" + numCards, cardString);
-// }
 
 
 // refactor toggling of buttons - current status: not functional
