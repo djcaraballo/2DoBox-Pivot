@@ -24,13 +24,18 @@ CardObject();
 function newCard(obj) {
   $('ul').prepend(`
     <li id="${obj.id}" class="card-container">
-      <h2 class="title-of-card"> ${obj.title} </h2>
-      <button class="delete-button" data-id="${obj.id}"></button>
-      <p>${obj.body}</p>
-      <button class="upvote"></button>
-      <button class="downvote"></button>
-      <p class="quality">quality:<span class="qualityVariable">${obj.quality}</span></p>
-      <hr> 
+      <article class="card-box-1">
+        <h2 class="title-of-card"> ${obj.title} </h2>
+        <button class="delete-button" data-id="${obj.id}"></button>
+      </article>
+      <article class="card-box-2">
+        <p>${obj.body}</p>
+      </article>
+      <article class="card-box-3">
+        <button class="upvote"></button>
+        <button class="downvote"></button>
+        <p class="quality">quality: <span class="quality-variable">${obj.quality}</span></p>
+      </article>
     </li>`);
 };
 
