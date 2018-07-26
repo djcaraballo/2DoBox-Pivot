@@ -83,7 +83,7 @@ function deleteCard() {
 // $("ul").on('click', function(event){
 //     var currentQuality = $($(event.target).siblings('p.quality').children()[0]).text().trim();
 //     var qualityVariable;
-// remove nested if/else statements - possibly use ternary operators
+// // remove nested if/else statements - possibly use ternary operators
 //     if (event.target.className === "upvote" || event.target.className === "downvote"){
 //         if (event.target.className === "upvote" && currentQuality === "plausible"){
 //             qualityVariable = "genius";

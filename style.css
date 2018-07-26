@@ -1,8 +1,3 @@
-/*add organizational comments*/
-/*change respective ids to classes*/
-/*consistency with hex values*/
-/*use of css modularization-DRY*/
-/*refactor pixels to em/rem*/
 
 /*WHOLE PAGE STYLING*/
 body {
@@ -22,14 +17,6 @@ body {
   text-align: center;
 }
 
-/*.top-box {
-  background-color: #E5F3F2;
-  box-sizing: border-box;
-  height: 300px;
-  margin: 0;
-  text-align: center;
-}*/
-
 h1{
   color: #00A79D;
   display: inline-block;
@@ -41,7 +28,6 @@ h1{
   color: #6D6E71;
 }
 
-/*check width of 45% throughout*/
 input {
   align-items: center;
   display: flex;
@@ -76,9 +62,6 @@ ul {
   padding: 0px;
 }
 
-/*li {
-}*/
-
 .card-container {
   border-bottom: solid #999 1px;  
   display: grid;
@@ -89,7 +72,6 @@ ul {
   padding: 0;
   position: relative;
   width: 45%;
-
 }
 
 .upvote,
