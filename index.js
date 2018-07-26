@@ -1,5 +1,5 @@
 $('.save-btn').on('click', saveBtn);
-$('.delete-button').on('click', deleteCard);
+$('ul').on('click', '.delete-button', deleteCard);
 
 retrieveObjectsInStorage();
 
