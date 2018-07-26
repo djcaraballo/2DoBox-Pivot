@@ -1,16 +1,7 @@
-// remove global variables
-// refactor code flow
-// create objects
-// refactor ids to classes when possible - already refactored css and html
+$('.save-btn').on('click', saveBtn);
+$('.delete-button').on('click', deleteCard);
 
-// var title = $('#title-input').val();
-// var body = $('#body-input').val();
-// var ul = $('ul').val();
-
-// var numCards = 0;
 retrieveObjectsInStorage();
-// var qualityVariable = "swill";
-// var card
 
 function CardObject(id, title, body, quality) {
   this.id = id;
@@ -33,8 +24,6 @@ function newCard(obj) {
       <hr> 
     </li>`);
 };
-
-$('.save-btn').on('click', saveBtn);
 
 function saveBtn(event) {
   event.preventDefault();
@@ -67,8 +56,6 @@ function retrieveObjectsInStorage() {
         newCard(cardData);
     }
 }
-
-$('.delete-button').on('click', deleteCard);
 
 function deleteCard() {
   $(this).closest('li').remove();
